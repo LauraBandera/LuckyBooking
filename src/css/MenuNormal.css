@@ -1,0 +1,29 @@
+#menu{
+    background-color: #2C3740;
+    padding: 2rem;
+    display: none;
+    height: 100vh;
+    padding-top: 7rem;
+}
+
+h3, .link{
+    font-size: 2rem;
+    color: #F2B6A0;
+    text-decoration: none;
+}
+
+div#header > svg{
+    font-size: 3rem;
+    color: #F2F2F2;
+    align-self: center;
+}
+
+div#header img{
+    height: 6rem;
+    margin-left: 1rem;
+}
+
+div#header{
+    display: flex;
+    margin-bottom: 5rem;
+}

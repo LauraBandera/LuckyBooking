@@ -1,0 +1,21 @@
+#perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label{
+    margin: 1rem auto .2rem auto;
+    width: 12rem;
+}
+
+input{
+    margin: 0 auto;
+}
+
+.error{
+    width: 12rem;
+    margin: 0 auto;
+    font-size: .8rem;
+    display: none;
+}

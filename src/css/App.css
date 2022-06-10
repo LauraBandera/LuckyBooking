@@ -1,0 +1,76 @@
+/*Distribución de página por si no llega al final de la pantalla*/
+#body{
+  display:flex !important;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer{
+  flex: 0 0 auto;
+}
+
+#contenido{
+  flex: 1 1 auto;
+}
+
+/*Aplicación*/
+.App-logo {
+  height: 10rem;
+  pointer-events: none;
+}
+
+.common_button{
+  background-color: #F2B6A0;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin-top: .5rem;
+}
+
+.double_width{
+  width: 10rem;
+}
+
+.big_icon{
+  font-size: 1rem;
+}
+
+input{
+  height: 1.5rem;
+  width: 12rem;
+  margin-top: .5rem;
+  color: #2C3740;
+}
+
+.login_input{
+  width: 13.5rem;
+}
+
+.App-header {
+  background-color: #28594B;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.oculto{
+  display: none;
+}
+
+.error{
+  color: red;
+  font-size: 1rem;
+}
+
+.c_inicio_adm{
+  text-align: left;
+}
+
+.f_inicio_adm{
+  width: 50%;
+}

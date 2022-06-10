@@ -1,0 +1,97 @@
+.card{
+    width: 80%;
+    left: 2.25rem;
+    top: 10.75;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+}
+
+#fondo{
+    flex: 1 1 auto;
+}
+
+h2{
+    color: #BE8671;
+    text-align: center;
+    border-bottom: 1.5px solid #BE8671;
+    width: 90%;
+    margin:.5rem auto;
+}
+
+.button_text{
+    color: #2C3740;
+    font-size: 1.25rem;
+}
+
+button#sin_efecto{
+    background-color: none;
+    border: none;
+}
+
+table{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.common_button_vistas{
+    background-color: #F2B6A0;
+    width: 12rem;
+    height: 2.5rem;
+    margin: .5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    color: #2C3740;
+}
+
+header{
+    background-color: #28594B;
+    margin-bottom: 0;
+}
+
+#App-logo{
+    height: 4rem;
+    pointer-events: none;
+    padding: 1.5rem;
+    padding-top: 2rem;
+}
+
+#hamburger{
+    font-size: 4rem;
+    margin: 1.5rem;
+    margin-top: 2rem;
+    color: #F2F2F2;
+    float: right;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+
+footer{
+    padding: 1.5rem 0;
+    color: #F2F2F2;
+    text-align: center;
+    background-color: #2C3740;
+    width: 100%;
+}
+
+#footer-menu{
+    padding: 1.5rem 0;
+    color: #F2F2F2;
+    text-align: center;
+    background-color: #2C3740;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-left: -2.1rem;
+}
+
+#copyright{
+    font-size: .75rem;
+    color: #F2F2F2;
+}
+

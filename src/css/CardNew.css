@@ -1,0 +1,15 @@
+.btnUpdate{
+    background-color: #F2B6A0;
+    border:none;
+    padding: .4rem;
+    border-radius: .2rem;
+}
+
+.card-title{
+    font-size: 1.5rem;
+    color:#BE8671;
+    border-bottom: 2px solid #BE8671;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: .4rem;
+}

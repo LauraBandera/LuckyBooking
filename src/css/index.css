@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: 'Roboto Slab', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2{
+  font-family: 'Ezcar', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
