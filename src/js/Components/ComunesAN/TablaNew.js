@@ -13,7 +13,6 @@ function TablaNew (props){
             dataType: "json"
         }).done(function(data) {
             if(data.mensaje){
-                console.log(DIR_SERV + "/updateReserva/" + props.id + "/" + f);
                 console.log('INSERTADO CON ÉXITO');
                 $('#reserva'+f+props.fecha).css({display: 'none'});
             }else{

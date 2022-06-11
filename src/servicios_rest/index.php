@@ -131,6 +131,24 @@ $app->get('/instalacionId/{numero}/{deporte}',function($request){
     echo json_encode(obtenerInstalacionId($datos), JSON_FORCE_OBJECT);
 });
 
+$app->get('/pistas/{actual}',function($request){
+    $datos[] = $request->getAttribute("actual");
+  
+    echo json_encode(obtenerPistas($datos), JSON_FORCE_OBJECT);
+});
+
+$app->get('/todasFechas/{actual}',function($request){
+    $datos[] = $request->getAttribute("actual");
+  
+    echo json_encode(obtenerTodasFechas($datos), JSON_FORCE_OBJECT);
+});
+
+$app->get('/generarDia/{fecha}',function($request){
+    $datos[] = $request->getAttribute("fecha");
+  
+    echo json_encode(generarDia($datos), JSON_FORCE_OBJECT);
+});
+
 // Una vez creado servicios los pongo a disposición
 $app->run();
 ?>

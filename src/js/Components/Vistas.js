@@ -74,6 +74,41 @@ class Vistas extends Component{
             return t;
     }
 
+    obtenerTodasFechas(){
+        let DIR_SERV = "http://localhost/Proyectos/lucky_booking_/src/servicios_rest";
+        let t = [];
+        let row = [];
+        let date = new Date();
+        let output = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, '0')+ "-" + String(date.getDate()).padStart(2, '0')
+        $.ajax({
+            url: DIR_SERV + '/todasFechas/' + output,
+            method: "GET",
+            dataType: "json",
+            async: false
+        })
+            .done(function (data) {
+                if(data.fechas){
+                    $.each(data.fechas, function (key, value){
+                        row = [];
+                        $.each(value, function (key, columns){
+                            row.push(columns);
+                        });
+                        t.push(row);
+                    });
+                    
+                }else if(data.mensaje){
+                    console.log(data.mensaje);
+                }else{
+                    console.log("error");
+                }
+            })
+            .fail(function () {
+                console.log("ERROR");
+            });
+
+            return t;
+    }
+
     render(){
         if(this.props.tipo != "admin"){
             return <BrowserRouter>
@@ -96,7 +131,7 @@ class Vistas extends Component{
             return <BrowserRouter>
                         <Routes>
                         <Route path="/" element={<VistaAdmin usuario={this.props.usuario}/>}>
-                            <Route path="ReservasDiarias" element={<ReservasDiarias/>} />
+                            <Route path="ReservasDiarias" element={<ReservasDiarias fechas={this.obtenerTodasFechas}/>} />
                             <Route path="NuevaReserva" element={<New id={this.props.id} usuario={this.props.usuario} fechas={this.obtenerFechas}/>} />
                             <Route path="Instalaciones" element={<Instalaciones/>} />
                             <Route path="Perfil" element={<Perfil id={this.props.id}/>} />

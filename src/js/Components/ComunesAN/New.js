@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { Card, CardTitle, Button, Table } from "reactstrap";
+import {Button} from "reactstrap";
 import './../../../css/New.css';
 import React, { useState } from 'react';
 import CardNew from './CardNew';

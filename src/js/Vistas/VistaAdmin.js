@@ -6,13 +6,14 @@ import MenuAdmin from "../Components/Admin/MenuAdmin";
 import { Outlet } from "react-router-dom";
 
 function VistaAdmin(){
+    
     return(
             <div id='body'>
                 <Header/>
                 <MenuAdmin/>
                 <Outlet/>
                 <div id="contenido">
-                    <CardAdmin titulo='Reservas de Hoy' btn='Ver Reservas'/>
+                    <CardAdmin titulo='Reservas Diarias' btn='Ver Reservas'/>
                     <CardAdmin titulo='Instalaciones' btn='Modificar'/>
                 </div>
                 <footer>

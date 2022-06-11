@@ -121,7 +121,7 @@ function obtenerDeportes($datos){
 function updateReserva($datos){
     try{
       $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
-      $consulta = "update Reserva set estado=3, id_usuario=? where id=?";
+      $consulta = "update Reserva set estado=2, id_usuario=? where id=?";
       $sentencia = $conexion->prepare($consulta);
       if($sentencia->execute($datos)){
         $respuesta["mensaje"] = "Cambio realizado con éxito";
@@ -224,9 +224,9 @@ function obtenerInstalaciones(){
 function obtenerOcupadas($datos){
     try{
         $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
-        $consulta="SELECT Plantilla.text_hora as hora, Instalacion.deporte as deporte, Instalacion.numero as numero 
-                    FROM Plantilla, Reserva, Instalacion 
-                    WHERE Plantilla.id=Reserva.id_plantilla and Instalacion.id=Reserva.id_instalacion and Reserva.estado<>1 and Reserva.fecha=?";
+        $consulta="SELECT Plantilla.text_hora as hora, Instalacion.deporte as deporte, Instalacion.numero as numero, Usuario.usuario as usuario, Reserva.estado as estado
+                    FROM Plantilla, Reserva, Instalacion, Usuario
+                    WHERE Plantilla.id=Reserva.id_plantilla and Instalacion.id=Reserva.id_instalacion and Reserva.estado<>1 and Reserva.fecha=? and Reserva.id_usuario=Usuario.id";
         $sentencia=$conexion->prepare($consulta);
         if($sentencia->execute($datos)){
             $respuesta["ocupadas"]=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -368,9 +368,66 @@ function insertarPlantilla($datos){
     return $respuesta;
 }
 
-function updateInstalacionesMenor($datos){
-    //1º Insertar nueva Instalacion con deporte y num
-
-    //2º Insertar Nuevas Plantillas con id anterior
+function obtenerPistas($datos){
+    try{
+        $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+        $consulta="SELECT DISTINCTROW  Instalacion.deporte, Instalacion.numero FROM Reserva, Instalacion where fecha>=?";
+        $sentencia=$conexion->prepare($consulta);
+        if($sentencia->execute($datos)){
+            if($sentencia->rowCount()>0){
+                $respuesta["deportes"]=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $respuesta["mensaje"]="No hay deportes disponibles";
+            }
+        }else{
+            $respuesta["error"]= "Error en la consulta. Error n&uacute;mero:".$sentencia->errorInfo()[1]." : ".$sentencia->errorInfo()[2];
+        }
+        $sentencia=null;
+        $conexion=null;
+    }catch(PDOException $e){
+        $respuesta["error"]="Imposible conectar:".$e->getMessage();
+    }
+    return $respuesta;
 }
 
+function obtenerTodasFechas($datos){
+    try{
+        $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+        $consulta="SELECT DISTINCT fecha FROM Reserva";
+        $sentencia=$conexion->prepare($consulta);
+        if($sentencia->execute($datos)){
+            if($sentencia->rowCount()>0){
+                $respuesta["fechas"]=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $respuesta["mensaje"]="No hay fechas disponibles";
+            }
+        }else{
+            $respuesta["error"]= "Error en la consulta. Error n&uacute;mero:".$sentencia->errorInfo()[1]." : ".$sentencia->errorInfo()[2];
+        }
+        $sentencia=null;
+        $conexion=null;
+    }catch(PDOException $e){
+        $respuesta["error"]="Imposible conectar:".$e->getMessage();
+    }
+    return $respuesta;
+}
+
+function generarDia($datos){
+    try{
+      $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+      $consulta = "INSERT INTO Reserva (fecha, id_plantilla, estado, id_usuario, id_instalacion) 
+                        SELECT ?, Plantilla.id, Plantilla.estado, 2,Plantilla.id_instalacion 
+                        from Plantilla;";
+      $sentencia = $conexion->prepare($consulta);
+      if($sentencia->execute($datos)){
+        $respuesta["mensaje"] = "Día generado con éxito";
+      }else{
+        $respuesta["error"] = "Error en la consulta";
+      }
+      $conexion = null;
+      $sentencia = null;
+    }catch(PDOException $e){
+      $respuesta["error"] = "Error en la conexion";
+    }
+    return $respuesta;
+}
