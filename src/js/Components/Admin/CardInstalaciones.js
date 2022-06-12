@@ -11,7 +11,7 @@ function CardInstalaciones(props){
         e.preventDefault();
         let DIR_SERV = "http://localhost/Proyectos/lucky_booking_/src/servicios_rest";
         if(nValor != null){
-            if(nValor < props.num){
+            if(nValor < valorMostrar){
                 //1º Selecccionamos todas las instalaciones con un número mayor al elegido
                 $.ajax({
                     url: DIR_SERV + '/instalacionesId/' + nValor + '/' + props.deporte,
@@ -57,7 +57,11 @@ function CardInstalaciones(props){
                                 async: false
                             })
                                 .done(function (data) {
-                                    console.log(data.mensaje);
+                                    if(data.mensaje){
+                                        console.log(data.mensaje);
+                                    }else{
+                                        console.log(data.error);
+                                    }
                                     setValorMostrar(nValor);
                                 })
                                 .fail(function () {
@@ -68,12 +72,12 @@ function CardInstalaciones(props){
                     .fail(function () {
                         console.log("ERROR");
                     });
-            }else if(nValor > props.num){
+            }else if(nValor > valorMostrar){
                 //1º Insertamos las nuevas instalaciones
-                let diferencia = parseInt(nValor)-parseInt(props.num);
+                let diferencia = parseInt(nValor)-parseInt(valorMostrar);
                 let horas = ['10:00-11:30', '17:00-18:30', '18:30-20:00'];
                 while(diferencia > 0){
-                    let nuevoNum = diferencia+parseInt(props.num);
+                    let nuevoNum = diferencia+parseInt(valorMostrar);
                     $.ajax({
                         url: DIR_SERV + '/insertarInstalacion/' + nuevoNum + '/' + props.deporte,
                         method: "POST",

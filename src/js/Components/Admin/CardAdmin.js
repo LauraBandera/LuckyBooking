@@ -11,6 +11,9 @@ function CardAdmin(props){
         $("div#menu").css({ display: "none" });
         $("div.fondo").css({ display: "none" });
         $("body").css({overflowY: "scroll"});
+        $("#header_grande").css({ display: "none" });
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     

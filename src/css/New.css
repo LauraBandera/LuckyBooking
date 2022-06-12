@@ -24,7 +24,8 @@ label{
 }
 
 h4{
-    width: 30%;
+    width: 40%;
+    font-size:1.2rem;
 }
 
 #cabeceraReserva{
@@ -41,10 +42,6 @@ h4{
     padding: .5rem;
     border-radius: .2rem;
     font-size: 1.2rem;
-}
-
-h4{
-    font-size:1.2rem;
 }
 
 h2{

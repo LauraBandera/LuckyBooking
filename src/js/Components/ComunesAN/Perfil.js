@@ -145,7 +145,7 @@ function Perfil(props){
                 <p><strong>Nombre:</strong><br/>{nombre}</p>
                 <p><strong>Apellidos:</strong><br/>{apellidos}</p>
                 <p>
-                    <strong>Email:</strong><br/>{email}
+                    <strong>Email:</strong><br/>{email}<br/>
                     <input placeholder="Nuevo Email" id='email_perfil' type='email' name='email' maxLength='20' onChange={handleChange}/>
                 </p>
                 <p>

@@ -13,6 +13,8 @@ function MenuAdmin(){
         $("body").css({overflowY: "scroll"});
         $("#body").css({ display: "flex" });
         $(".fondo").css({ display: "block" });
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     const displayAllNavigate = () => {
@@ -21,6 +23,9 @@ function MenuAdmin(){
         $("div#menu").css({ display: "none" });
         $(".fondo").css({ display: "none" });
         $("body").css({overflowY: "scroll"});
+        $("#header_grande").css({ display: "none" });
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     return(

@@ -12,6 +12,8 @@ function CardNormal(props){
         $("div#menu").css({ display: "none" });
         $("div.fondo").css({ display: "none" });
         $("body").css({overflowY: "scroll"});
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     

@@ -13,6 +13,8 @@ function MenuNormal(){
         $("body").css({overflowY: "scroll"});
         $("#body").css({ display: "flex" });
         $(".fondo").css({ display: "block" });
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     const displayAllNavigate = () => {
@@ -20,7 +22,10 @@ function MenuNormal(){
         $("header").css({ display: "block" });
         $("div#menu").css({ display: "none" });
         $("div.fondo").css({ display: "none" });
+        $("div#contenido").css({ display: "none" });
         $("body").css({overflowY: "scroll"});
+        $("div#menu_grande").css({ display: "none" });
+        $("#header_grande").css({ display: "none" });
     }
 
     return(

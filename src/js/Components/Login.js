@@ -59,7 +59,7 @@ function Login(props) {
                 }
                 else if (data.mensaje) {
                     props.acceder(false, "", "", "");
-                    $("#error_login").removeClass("oculto");
+                    $("#error_login").css({display: 'block'});
                 }
     
             })

@@ -50,6 +50,9 @@ table{
 header{
     background-color: #28594B;
     margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #App-logo{
@@ -95,3 +98,54 @@ footer{
     color: #F2F2F2;
 }
 
+#menu_grande{
+    display: none;
+}
+#version_grande{
+    flex: 1 1 auto;
+}
+
+#nuevaReserva, form#perfil{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#header_grande{
+    display: none;
+}
+
+@media all and (min-width: 600px) {
+    #version_grande{
+        display: flex !important;
+    }
+    .card, #diaria, #nuevaReserva{
+        width: 60%;
+    }
+    
+    #menu_grande{
+        background-color: white;
+        padding: 1.5rem;
+        display:block;
+        width: 30%;
+    }
+    
+    #menu_grande > h3, #menu_grande > h3 > a{
+        color: #2C3740 !important;
+    }
+
+    #header_grande{
+        color: #F2F2F2;
+        font-size: 1.5rem;
+        display: flex;
+    }
+
+    #icon_user{
+        font-size: 2rem;
+        margin: 0 .7rem;
+        color:#F2F2F2;
+    }
+
+    #hamburger{
+        display: none;
+    }
+}
