@@ -15,6 +15,7 @@ function MenuNormal(){
         $(".fondo").css({ display: "block" });
         $("div#menu_grande").css({ display: "none" });
         $("#header_grande").css({ display: "none" });
+        $("html, body").animate({ scrollTop: "0" });
     }
 
     const displayAllNavigate = () => {
