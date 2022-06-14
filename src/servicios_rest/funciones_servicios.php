@@ -224,7 +224,7 @@ function obtenerInstalaciones(){
 function obtenerOcupadas($datos){
     try{
         $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
-        $consulta="SELECT Plantilla.text_hora as hora, Instalacion.deporte as deporte, Instalacion.numero as numero, Usuario.usuario as usuario, Reserva.estado as estado
+        $consulta="SELECT Plantilla.text_hora as hora, Instalacion.deporte as deporte, Instalacion.numero as numero, Usuario.usuario as usuario, Reserva.estado as estado, Reserva.id as id
                     FROM Plantilla, Reserva, Instalacion, Usuario
                     WHERE Plantilla.id=Reserva.id_plantilla and Instalacion.id=Reserva.id_instalacion and Reserva.estado<>1 and Reserva.fecha=? and Reserva.id_usuario=Usuario.id";
         $sentencia=$conexion->prepare($consulta);
@@ -468,6 +468,25 @@ function obtenerUsuarios(){
         $conexion=null;
     }catch(PDOException $e){
         $respuesta["error"]="Imposible conectar:".$e->getMessage();
+    }
+    return $respuesta;
+}
+
+function updateEstado($datos){
+    try{
+      $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+      $consulta = "update Reserva set estado=3 where id=?";
+      $sentencia = $conexion->prepare($consulta);
+      if($sentencia->execute($datos)){
+        $respuesta["mensaje"] = "Cambio realizado con éxito";
+      }else{
+        $respuesta["error"] = "Error en la consulta";
+      }
+      
+      $conexion = null;
+      $sentencia = null;
+    }catch(PDOException $e){
+      $respuesta["error"] = "Error en la conexion";
     }
     return $respuesta;
 }

@@ -165,6 +165,12 @@ $app->get('/obtenerUsuarios',function(){
     echo json_encode(obtenerUsuarios(), JSON_FORCE_OBJECT);
 });
 
+$app->get('/updateEstado/{id}',function($request){
+    $datos[] = $request->getAttribute("id");
+  
+    echo json_encode(updateEstado($datos), JSON_FORCE_OBJECT);
+});
+
 // Una vez creado servicios los pongo a disposición
 $app->run();
 ?>
