@@ -431,3 +431,43 @@ function generarDia($datos){
     }
     return $respuesta;
 }
+
+function addUser($datos){
+    try{
+        $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+        $consulta = "insert into Usuario (usuario, clave, nombre, apellido, telefono, email, tipo) value (?, ?, ?, ?, ?, ?, 'normal')";
+        $sentencia = $conexion->prepare($consulta);
+        if($sentencia->execute($datos)){
+          $respuesta["mensaje"] = "Usuario insertada con éxito";
+        }else{
+          $respuesta["error"] = "Error en la consulta";
+        }
+        $conexion = null;
+        $sentencia = null;
+      }catch(PDOException $e){
+        $respuesta["error"] = "Error en la conexion";
+      }
+      return $respuesta;
+}
+
+function obtenerUsuarios(){
+    try{
+        $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
+        $consulta="SELECT usuario, nombre, apellido, telefono, email FROM Usuario";
+        $sentencia=$conexion->prepare($consulta);
+        if($sentencia->execute()){
+            if($sentencia->rowCount()>0){
+                $respuesta["usuarios"]=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $respuesta["mensaje"]="No hay usuarios disponibles";
+            }
+        }else{
+            $respuesta["error"]= "Error en la consulta. Error n&uacute;mero:".$sentencia->errorInfo()[1]." : ".$sentencia->errorInfo()[2];
+        }
+        $sentencia=null;
+        $conexion=null;
+    }catch(PDOException $e){
+        $respuesta["error"]="Imposible conectar:".$e->getMessage();
+    }
+    return $respuesta;
+}

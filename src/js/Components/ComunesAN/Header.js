@@ -24,8 +24,14 @@ function Header(props){
         $("header").css({ display: "block" });
         $("div#menu").css({ display: "none" });
         $("div#footer-menu").css({ display: "none" });
-        $("div#menu_grande").css({ display: "none" });
-        $("#header_grande").css({ display: "none" });
+        if(window.innerWidth > 600){
+            $("div#menu_grande").css({ display: "block" });
+            $("#header_grande").css({ display: "block" });
+            $("header").css({ display: "flex" });
+        }else{
+            $("div#menu_grande").css({ display: "none" });
+            $("#header_grande").css({ display: "none" });
+        }
     }
 
     const displayAllNavigate = () => {

@@ -22,7 +22,6 @@ function TablaInicio (props){
                         });
                         t.push(row);
                     });
-                    
                 }else if(data.mensaje){
                     console.log("mensaje");
                 }else{

@@ -6,11 +6,10 @@ import Historico from './Normal/Historico';
 import Proximas from './Normal/Proximas';
 import Perfil from './ComunesAN/Perfil';
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import InicioAdmin from './Admin/InicioAdmin';
-import Login from './Login';
 import VistaAdmin from '../Vistas/VistaAdmin';
 import ReservasDiarias from './Admin/ReservasDiarias';
 import Instalaciones from './Admin/Instalaciones';
+import NewUsuario from './Admin/NewUsuario';
 
 class Vistas extends Component{
     constructor(props){
@@ -134,6 +133,7 @@ class Vistas extends Component{
                             <Route path="ReservasDiarias" element={<ReservasDiarias fechas={this.obtenerTodasFechas}/>} />
                             <Route path="NuevaReserva" element={<New id={this.props.id} usuario={this.props.usuario} fechas={this.obtenerFechas}/>} />
                             <Route path="Instalaciones" element={<Instalaciones/>} />
+                            <Route path="NewUsuario" element={<NewUsuario/>} />
                             <Route path="Perfil" element={<Perfil id={this.props.id}/>} />
                             <Route path="*" element={
                                 <main style={{ padding: "3rem" }}>
@@ -144,21 +144,6 @@ class Vistas extends Component{
                         </Route>
                         </Routes>
                     </BrowserRouter>
-            /*
-            return <BrowserRouter>
-                        <Routes>
-                        <Route path="/" element={<InicioAdmin acceder={(c, u, i, t) => this.props.acceder(c, u, i, t)} handleCerrarSesion={this.handleCerrarSesion}/>}>
-                            <Route path="Login" element={<Login/>} />
-                            <Route path="*" element={
-                                <main style={{ padding: "3rem" }}>
-                                    <h1>Error la ruta no existe</h1>
-                                </main>
-                            }
-                            />
-                        </Route>
-                        </Routes>
-                    </BrowserRouter>
-            */
         }
     }
 }

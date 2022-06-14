@@ -149,6 +149,22 @@ $app->get('/generarDia/{fecha}',function($request){
     echo json_encode(generarDia($datos), JSON_FORCE_OBJECT);
 });
 
+$app->post('/addUser',function($request){
+    $datos[] = $request->getParam("usuario");
+    $datos[] = $request->getParam("clave");
+    $datos[] = $request->getParam("nombre");
+    $datos[] = $request->getParam("apellido");
+    $datos[] = $request->getParam("telefono");
+    $datos[] = $request->getParam("email");
+  
+    echo json_encode(addUser($datos), JSON_FORCE_OBJECT);
+});
+
+$app->get('/obtenerUsuarios',function(){
+  
+    echo json_encode(obtenerUsuarios(), JSON_FORCE_OBJECT);
+});
+
 // Una vez creado servicios los pongo a disposición
 $app->run();
 ?>

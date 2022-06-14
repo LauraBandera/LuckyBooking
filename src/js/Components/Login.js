@@ -1,7 +1,6 @@
 import '../../css/App.css';
 import React, { useState } from 'react';
 import { Button } from 'reactstrap';
-import { Outlet, Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import md5 from 'md5';
 import logo from "../../img/logo_lucky_booking_light.png";
@@ -77,9 +76,8 @@ function Login(props) {
           <div>
             <input placeholder="Contraseña" name='password' type={passwordShown ? "text" : "password"} onChange={handleChange}/> <Icon onClick={togglePassword} color={"#F2F2F2"}className="big_icon" icon={passwordIcon}/>
           </div>
-          <div id='error_login' className='oculto error'>Usuario/Contraseña no valido</div>
+          <div id='error_login' className='oculto error'><strong>Usuario/Contraseña no valido</strong></div>
           <Button type='submit' className="common_button">Login</Button>
-          <Button type='submit' value={"nuevo"} className="common_button double_width">Nuevo Registro</Button>
         </form>
       </div>
     );

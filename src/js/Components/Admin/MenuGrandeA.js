@@ -15,6 +15,7 @@ function MenuGrandeA(){
             <h3><Icon icon="ant-design:right-outlined" /><Link className='link' onClick={displayAllNavigate} to="/ReservasDiarias">Reservas Diarias</Link></h3>
             <h3><Icon icon="ant-design:right-outlined" /><Link className='link' onClick={displayAllNavigate} to="/NuevaReserva">Nueva Reserva</Link></h3>
             <h3><Icon icon="ant-design:right-outlined" /><Link className='link' onClick={displayAllNavigate} to="/Instalaciones">Instalaciones</Link></h3>
+            <h3><Icon icon="ant-design:right-outlined" /><Link className='link' onClick={displayAllNavigate} to="/NewUsuario">Nuevo Usuario</Link></h3>
             <h3><Icon icon="ant-design:right-outlined" /><Link className='link' onClick={displayAllNavigate} to="/Perfil">Perfil</Link></h3>
         </div>
     );

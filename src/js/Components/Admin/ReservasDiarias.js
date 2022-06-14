@@ -108,7 +108,7 @@ function ReservasDiarias(props){
             dataType: "json"
         }).done(function(data) {
             if(data.mensaje){
-                console.log('Día generado con éxito');
+                $('#confirmacion_dia').css({display: 'block'});
                 arrayFechas.push([output]);
                 console.log(arrayFechas);
             }else{
@@ -121,6 +121,7 @@ function ReservasDiarias(props){
 
     return <div id='diaria'>
                 <Button onClick={generarDia} className='common_button_vistas'>Generar Nuevo Día</Button>
+                <div id='confirmacion_dia'>Día generado con éxito</div>
                 <h2>Reservas Diarias</h2>
                 <div id='cabeceraReserva'>
                     <Button className='cambioFecha' onClick={moverFechaAnt}><strong>{'<'}</strong></Button>

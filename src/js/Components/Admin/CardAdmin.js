@@ -7,13 +7,17 @@ function CardAdmin(props){
 
     const displayAllNavigate = () => {
         $("div").css({ display: "block" });
-        $("header").css({ display: "block" });
+        $("header").css({ display: "flex" });
         $("div#menu").css({ display: "none" });
         $("div.fondo").css({ display: "none" });
         $("body").css({overflowY: "scroll"});
-        $("#header_grande").css({ display: "none" });
-        $("div#menu_grande").css({ display: "none" });
-        $("#header_grande").css({ display: "none" });
+        if(window.innerWidth > 600){
+            $("div#menu_grande").css({ display: "block" });
+            $("#header_grande").css({ display: "flex" });
+        }else{
+            $("#header_grande").css({ display: "none" });
+            $("div#menu_grande").css({ display: "none" });
+        }
     }
 
     

@@ -25,8 +25,8 @@ class VistaNormal extends Component{
                                 <MenuGrandeN/>
                                 <Outlet/>
                                 <div id='contenido'>
-                                    <CardNormal usuario={this.props.usuario} titulo={"Proximas Reservas"} b={"Nueva Reserva"} name={"btnNew"}/>
-                                    <CardNormal usuario={this.props.usuario} titulo={"Historial Reservas"} b={"Más Reservas"} name={"btnMas"}/>
+                                    <CardNormal recargar={this.actualizarPagina} usuario={this.props.usuario} titulo={"Proximas Reservas"} b={"Nueva Reserva"} name={"btnNew"}/>
+                                    <CardNormal recargar={this.actualizarPagina} usuario={this.props.usuario} titulo={"Historial Reservas"} b={"Más Reservas"} name={"btnMas"}/>
                                 </div>
                             </div>
                         
