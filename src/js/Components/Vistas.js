@@ -77,10 +77,8 @@ class Vistas extends Component{
         let DIR_SERV = "http://localhost/Proyectos/lucky_booking_/src/servicios_rest";
         let t = [];
         let row = [];
-        let date = new Date();
-        let output = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, '0')+ "-" + String(date.getDate()).padStart(2, '0')
         $.ajax({
-            url: DIR_SERV + '/todasFechas/' + output,
+            url: DIR_SERV + '/todasFechas',
             method: "GET",
             dataType: "json",
             async: false
@@ -98,7 +96,7 @@ class Vistas extends Component{
                 }else if(data.mensaje){
                     console.log(data.mensaje);
                 }else{
-                    console.log("error");
+                    console.log(data.error);
                 }
             })
             .fail(function () {

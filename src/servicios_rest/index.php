@@ -137,10 +137,9 @@ $app->get('/pistas/{actual}',function($request){
     echo json_encode(obtenerPistas($datos), JSON_FORCE_OBJECT);
 });
 
-$app->get('/todasFechas/{actual}',function($request){
-    $datos[] = $request->getAttribute("actual");
+$app->get('/todasFechas',function($request){
   
-    echo json_encode(obtenerTodasFechas($datos), JSON_FORCE_OBJECT);
+    echo json_encode(obtenerTodasFechas(), JSON_FORCE_OBJECT);
 });
 
 $app->get('/generarDia/{fecha}',function($request){

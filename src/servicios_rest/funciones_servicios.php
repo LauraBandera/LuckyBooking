@@ -390,12 +390,12 @@ function obtenerPistas($datos){
     return $respuesta;
 }
 
-function obtenerTodasFechas($datos){
+function obtenerTodasFechas(){
     try{
         $conexion= new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES 'utf8'"));
         $consulta="SELECT DISTINCT fecha FROM Reserva";
         $sentencia=$conexion->prepare($consulta);
-        if($sentencia->execute($datos)){
+        if($sentencia->execute()){
             if($sentencia->rowCount()>0){
                 $respuesta["fechas"]=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             }else{
